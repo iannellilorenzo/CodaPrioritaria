@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-class CodaPrioritaria
+class CodaPrioritaria : IComparable
 {
     private ArrayList _arrList;
 
@@ -38,8 +38,12 @@ class CodaPrioritaria
 
     public void Aggiunta(object? value)
     {
-        // da fare bene
-        ArrList.Add(value);
+        int index = 0;
+
+        while (index < ArrList.Count && (ArrList[index]).CompareTo())
+        {
+
+        }
     }
 
     public int Ricerca(object? value)
