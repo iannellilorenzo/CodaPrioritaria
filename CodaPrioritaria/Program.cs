@@ -54,6 +54,7 @@ class CodaPrioritaria : IComparable
                 {
                     ArrList.Add(value);
                 }
+                break;
             }
             else if (fabietto == -1)
             {
@@ -63,6 +64,7 @@ class CodaPrioritaria : IComparable
             else if (fabietto == 0)
             {
                 ArrList.Insert(i, value);
+                break;
             }
         }
     }
