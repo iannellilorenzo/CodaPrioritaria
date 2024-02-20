@@ -38,11 +38,32 @@ class CodaPrioritaria : IComparable
 
     public void Aggiunta(object? value)
     {
-        int index = 0;
-
-        while (index < ArrList.Count && (ArrList[index]).CompareTo())
+        if (ArrList.Count == 0)
         {
+            ArrList.Add(value);
+            return;
+        }
 
+        for (int i = 0; i < ArrList.Count; i++)
+        {
+            int fabietto = ((IComparable)ArrList[i]).CompareTo(value);
+
+            if (fabietto == 1)
+            {
+                if (i == ArrList.Count - 1)
+                {
+                    ArrList.Add(value);
+                }
+            }
+            else if (fabietto == -1)
+            {
+                ArrList.Insert(i, value);
+                break;
+            }
+            else if (fabietto == 0)
+            {
+                ArrList.Insert(i, ArrList[i]);
+            }
         }
     }
 
@@ -93,6 +114,14 @@ class CodaPrioritaria : IComparable
 
         return value;
     }
+
+    public int CompareTo(object? value)
+    {
+        IComparable other = (IComparable)value;
+        // se primo > secondo == 1; else if secondo > primo == -1; else == 0
+
+        return CompareTo(other);
+    }
 }
 
 class Program
@@ -102,7 +131,9 @@ class Program
         // scorri l'arraylist, vedi quale è l'elemento maggiore, metti l'elemento già nella posizione corretta
         CodaPrioritaria coda = new CodaPrioritaria();
 
-        coda.Aggiunta("asaa");
+        coda.Aggiunta(4522222);
+        coda.Aggiunta(298765);
+        coda.Aggiunta(154);
 
         foreach(var item in coda.ArrList)
         {
@@ -116,11 +147,6 @@ class Program
         coda.EstrazPrimo();
 
         Console.WriteLine(coda.IsEmpty());
-
-        for (int i = 0; i < 5; i++)
-        {
-            coda.Aggiunta(i);
-        }
 
         foreach (var item in coda.ArrList)
         {
