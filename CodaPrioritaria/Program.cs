@@ -62,7 +62,7 @@ class CodaPrioritaria : IComparable
             }
             else if (fabietto == 0)
             {
-                ArrList.Insert(i, ArrList[i]);
+                ArrList.Insert(i, value);
             }
         }
     }
@@ -117,10 +117,7 @@ class CodaPrioritaria : IComparable
 
     public int CompareTo(object? value)
     {
-        IComparable other = (IComparable)value;
-        // se primo > secondo == 1; else if secondo > primo == -1; else == 0
-
-        return CompareTo(other);
+        return -2;
     }
 }
 
